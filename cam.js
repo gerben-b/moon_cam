@@ -1,0 +1,1 @@
+var observatory = new Observatory();

@@ -1,0 +1,181 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  background-color: #222;
+  outline: solid #000 0px;
+  border: 0px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#time_label {
+  width: 90px;
+}
+
+#timelapse_value {
+  right:    240;
+  bottom:   0;
+  position: absolute;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+input[type=button] {
+  position: absolute;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: opacity .2s;
+}
+
+#timelapse_button {
+  background-color: #55BB55;
+  right:    160;
+  bottom:   0;
+}
+
+#photo_button {
+  background-color: #44AA44;
+  right:    80;
+  bottom:   0;
+}
+
+#video_button {
+  background-color: #AA4444;
+  right: 0;
+  bottom: 0;
+}
+
+svg {
+  right: 20;
+  bottom: 20;
+  position: absolute;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+  height: 100px;
+  transform: rotate(0deg);
+}
+
+path {
+  fill: #AAAAAA;
+  stroke: #AAAAAA;
+  stroke-width: 0px;
+}
+
+#settings {
+  padding-top: 20px;
+  border: 5px;
+  border-style: solid;
+  border-color: #464;
+  opacity: 0.5;
+  height: 250px;
+  position: relative;
+  width: 1427px;
+  transition: opacity .2s;
+}
+
+#settings:hover {
+  opacity: 1;
+}
+
+#information {
+  padding-top: 20px;
+  border: 5px;
+  border-style: solid;
+  border-color: #446;
+  opacity: 0.5;
+  height: 250px;
+  position: relative;
+  width: 1427px;
+  transition: opacity .2s;
+}
+
+#information:hover {
+  opacity: 1;
+}
+
+img {
+  width: 2880px;
+  height: 1620px;
+}
+
+input[type=checkbox] {
+  width: 10px;
+  height: 10px
+  transition: opacity .2s;
+}
+
+input,select {
+  opacity: 0.5;
+  vertical-align: middle;
+  background-color: #444;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  width: 75;
+  height: 25;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition: opacity .2s;
+}
+
+select,option {
+  width: 125px;
+  font-size: 16px;
+}
+
+table {
+  border-spacing: 7px;
+}
+
+label {
+  font-size: 16px;
+  display: inline-block;
+  text-align: right;
+  padding-left: 20px;
+  padding-right: 5px;
+  vertical-align: middle;
+  margin-bottom: 20px;
+}
+
+.fixed_width {
+  width: 70px;
+}
+
+.grid {
+  width: 130px;
+}
+
+.slider {
+  width: 600px;
+  height: 5px;
+  background: #d3d3d3;
+  outline: none;
+  transition: opacity .2s;
+  margin-bottom: 20px;
+}
+
+input:hover {
+  opacity: 1;
+}
+
+select:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #CCCCCC;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #CCCCCC;
+  cursor: pointer;
+}

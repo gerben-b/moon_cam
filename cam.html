@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>Raspberry pi HQ Camera</title>
+    <script src="observatory/astronomy.browser.js"></script>
+    <script src="observatory/observatory.js"></script>
+    <script src="observatory/moon.js"></script>
+    <script src="observatory/suncalc.js"></script>
+    <script src="cam.js"></script>
+    <script src="observatory/configuration.js"></script>
+    <script src="observatory/camera.js"></script>
+    <link rel="stylesheet" href="cam.css">
+  </head>
+  <body onLoad="initialise()">
+    <center>
+      <table>
+        <tr>
+          <td colspan="2">
+            <div id="container" onclick="take_photo()"><img id="image" /></div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="settings">
+              <label class="fixed_width">Shutter</label><input type="range" class="slider" id="shutter_value" min="0" max="200000" step="100" oninput="set_shutter_value(parseInt(this.value))" />
+              <label>Short time</label><input type="checkbox" id="devide_value" oninput="set_devide_value(this.checked)" />
+              <label>Long time</label><input type="checkbox" id="multiply_value" oninput="set_multiply_value(this.checked)" />
+              <label id="time_label"></label>
+              <br />
+              <label class="fixed_width">Contrast</label><input type="range" class="slider" id="contrast_value" min="-100" max="100" step="1"  oninput="set_contrast_value(parseInt(this.value))" />
+              <label class="fixed_width">Contrast</label><input type="range" class="slider" id="v_contrast_value" min="-100" max="100" step="1" oninput="set_v_contrast_value(parseInt(this.value))" />
+              <br />
+              <label class="fixed_width">Red gain</label><input type="range" class="slider" id="red_gain_value" min="0.05" max="5" step="0.05"  oninput="set_red_gain_value(parseFloat(this.value))" />
+              <label class="fixed_width">Profile</label><select id="profile"></select><label class="fixed_width">Iris</label><select id="iris"></select>
+              <br />
+              <label class="fixed_width">Blue gain</label><input type="range" class="slider" id="blue_gain_value" min="0.05" max="5" step="0.05"  oninput="set_blue_gain_value(parseFloat(this.value))" />
+              <input type="button" id="video_button" onclick="take_video()" value="video" />
+              <input type="button" id="photo_button" onclick="take_photo()" value="photo" />
+              <input type="button" id="timelapse_button" onclick="take_timelapse()" value="burst" />
+              <input type="number" id="timelapse_value" oninput="set_timelapse_value(parseInt(this.value))" min="1" max="20" step="1" />
+            </div>
+          </td>
+          <td>
+            <div id="information">
+              <label class="grid">Sun altitude:</label><label class="grid" id="sun_altitude"></label>
+              <label class="grid">Sun azimuth:</label><label class="grid" id="sun_azimuth"></label>
+              <label id="moonaltitude" class="grid">Moon altitude:</label><label class="grid" id="moon_altitude"></label>
+              <label id="moonazimuth" class="grid">Moon azimuth:</label><label class="grid" id="moon_azimuth"></label>
+              <br />
+              <label id="jupiteraltitude" class="grid">Jupiter altitude:</label><label class="grid" id="jupiter_altitude"></label>
+              <label id="jupiterazimuth" class="grid">Jupiter azimuth:</label><label class="grid" id="jupiter_azimuth"></label>
+              <label id="marsaltitude" class="grid">Mars altitude:</label><label class="grid" id="mars_altitude"></label>
+              <label id="marsazimuth" class="grid">Mars azimuth:</label><label class="grid" id="mars_azimuth"></label>
+              <br />
+              <label class="grid">Current time:</label><label id="current_time"></label>
+              <br />
+              <label class="grid">UTC time:</label><label id="utc_time"></label>
+              <svg id="svg"><path id="moon_illumination"/></svg>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>
