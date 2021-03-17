@@ -14,3 +14,7 @@ Some notes on installation of this software:
 - Moon_calc uses the apache webserver in the Raspberry pi 4 which runs as user pi;
 - Mjpg-streamer must be built from source on the Raspberry pi;
 - The camera is a Raspberry HQ camera, but other camera's should work to with some tweaking of the scripts.
+
+In the near future, moon_cam will also be able to control a telescope using the indi library. This is currently under test.
+
+For those who like to learn coding: I am not a proper software engineer, for me it is just fun, so don't expect to find good coding practice in this repository.
