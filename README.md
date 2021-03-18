@@ -17,4 +17,9 @@ Some notes on installation of this software:
 
 In the near future, moon_cam will also be able to control a telescope using the indi library. This is currently under test.
 
-For those who like to learn coding: I am not a proper software engineer, for me it is just fun, so don't expect to find good coding practice in this repository.
+Issues
+- I am not sure that all angles are correct. The calculations in astronomy match those in kstars but the suncalc calculations seem slightly of;
+- mjpg-streamer hangs after a while when more video data is produced than can be tranferred. I does not drop frames in those conditions;
+- moon_cam was desinged to work on a Raspberry pi, for other hardware the shell scripts in the streamer folder may need adjusting.
+
+For those who like to learn coding: I am not a programmer, for me it is just fun, so don't expect to find good coding practice in this repository.
