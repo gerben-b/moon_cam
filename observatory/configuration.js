@@ -3,7 +3,8 @@ var iris_choice = 0;
 
 var configuration = {
     profiles: [],
-    iris_setting: []
+    iris_setting: [],
+    observatory_setting: []
 };
 
 function initialise() {
@@ -23,6 +24,7 @@ function load_profiles() {
             apply_profile();
             apply_iris_setting();
             apply_iris();
+            apply_observatory_setting();
         }
     }
     var timestamp = (new Date).getTime();
@@ -93,6 +95,12 @@ function apply_iris() {
     var factor = configuration.iris_setting[iris_choice].factor;
     observatory.set_profile_state("factor", factor);
     show_remaining_time();
+}
+
+function apply_observatory_setting() {
+    document.getElementById("latitude").innerHTML = configuration.observatory_setting[0].latitude;
+    document.getElementById("longitude").innerHTML = configuration.observatory_setting[0].longitude;
+    document.getElementById("altitude").innerHTML = configuration.observatory_setting[0].altitude;
 }
 
 function is_default(key, value) {
