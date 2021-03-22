@@ -167,17 +167,25 @@ function show_information() {
     };
     var now = new Date;
     var utc_timestamp = Date.UTC(now.getUTCFullYear(),now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
-    var sun_position = SunCalc.getPosition(utc_timestamp, 52.4, 5.1);
-    var moon_position = SunCalc.getMoonPosition(utc_timestamp, 52.4, 5.1);
-    var moon_illumination = SunCalc.getMoonIllumination(utc_timestamp, 52.4, 5.1);
+    var latitude = parseFloat(document.getElementById("latitude").innerHTML);
+    var longitude = parseFloat(document.getElementById("longitude").innerHTML);
+    var altitude = parseInt(document.getElementById("altitude").innerHTML);
+    var sun_position = SunCalc.getPosition(utc_timestamp, latitude, longitude);
+    var moon_position = SunCalc.getMoonPosition(utc_timestamp, latitude, longitude);
+    var moon_illumination = SunCalc.getMoonIllumination(utc_timestamp, latitude, longitude);
     var zenith_angle = moon_illumination.angle - moon_position.parallacticAngle;
-    draw(moon_illumination.phase, zenith_angle * 360 / Math.PI);
-    document.getElementById("sun_altitude").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(sun_position.altitude * 360 / Math.PI);
-    document.getElementById("sun_azimuth").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(sun_position.azimuth * 360 / Math.PI);
-    document.getElementById("moon_altitude").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(moon_position.altitude * 360 / Math.PI);
-    document.getElementById("moon_azimuth").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(moon_position.azimuth * 360 / Math.PI);
-    var altitude_visible = (moon_position.altitude * 360 / Math.PI) > 10;
-    var azimuth_visible = (moon_position.azimuth * 360 / Math.PI) > 45 && (moon_position.azimuth * 360 / Math.PI) > 315;
+    draw(moon_illumination.phase, moon_position.parallacticAngle * 180 / Math.PI);
+    let observer = new Astronomy.Observer(52.0029907, 5.1857599, altitude);
+    let sun_equ_ofdate = Astronomy.Equator('Sun', now, observer, true, true);
+    let sun_hor = Astronomy.Horizon(now, observer, sun_equ_ofdate.ra, sun_equ_ofdate.dec, 'normal');
+    let moon_equ_ofdate = Astronomy.Equator('Moon', now, observer, true, true);
+    let moon_hor = Astronomy.Horizon(now, observer, moon_equ_ofdate.ra, moon_equ_ofdate.dec, 'normal');
+    document.getElementById("sun_altitude").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(sun_hor.altitude);
+    document.getElementById("sun_azimuth").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(sun_hor.azimuth);
+    document.getElementById("moon_altitude").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(moon_hor.altitude);
+    document.getElementById("moon_azimuth").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(moon_hor.azimuth);
+    var altitude_visible = (moon_hor.altitude) > 10;
+    var azimuth_visible = (moon_hor.azimuth) > 130 && (moon_hor.azimuth) < 280;
     if (!altitude_visible || !azimuth_visible) {
         document.getElementById("moon_altitude").style.color = '#FAA';
         document.getElementById("moonaltitude").style.color = '#FAA';
@@ -200,13 +208,12 @@ function show_information() {
     }
     document.getElementById("current_time").innerHTML = new Intl.DateTimeFormat("nl-NL", local_options).format(now);
     document.getElementById("utc_time").innerHTML = new Intl.DateTimeFormat("nl-NL", utc_options).format(now);
-    let observer = new Astronomy.Observer(52.4, 5.11, 5);
     let jup_equ_ofdate = Astronomy.Equator('Jupiter', now, observer, true, true);
     let jup_hor = Astronomy.Horizon(now, observer, jup_equ_ofdate.ra, jup_equ_ofdate.dec, 'normal');
     document.getElementById("jupiter_altitude").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(jup_hor.altitude);
     document.getElementById("jupiter_azimuth").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(jup_hor.azimuth);
     altitude_visible = jup_hor.altitude > 10;
-    azimuth_visible = jup_hor.azimuth < 45 || jup_hor.azimuth > 315;
+    azimuth_visible = jup_hor.azimuth > 130 && jup_hor.azimuth < 280;
     if (!altitude_visible || !azimuth_visible) {
         document.getElementById("jupiter_altitude").style.color = '#FAA';
         document.getElementById("jupiteraltitude").style.color = '#FAA';
@@ -232,7 +239,7 @@ function show_information() {
     document.getElementById("mars_altitude").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(mar_hor.altitude);
     document.getElementById("mars_azimuth").innerHTML = new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 1, minimumFractionDigits: 5 }).format(mar_hor.azimuth);
     altitude_visible = mar_hor.altitude > 10;
-    azimuth_visible = mar_hor.azimuth < 45 || mar_hor.azimuth > 315;
+    azimuth_visible = mar_hor.azimuth > 130 && mar_hor.azimuth < 280;
     if (!altitude_visible || !azimuth_visible) {
         document.getElementById("mars_altitude").style.color = '#FAA';
         document.getElementById("marsaltitude").style.color = '#FAA';
