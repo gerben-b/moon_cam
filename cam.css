@@ -47,7 +47,19 @@ input[type=button] {
   bottom: 0;
 }
 
-svg {
+.moon_back {
+  right: 5;
+  bottom: 15;
+  position: absolute;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 115px;
+  height: 115px;
+  z-index: 1;
+  background-color: transparant;
+}
+
+.moon_front {
   right: 20;
   bottom: 20;
   position: absolute;
@@ -56,6 +68,57 @@ svg {
   width: 100px;
   height: 100px;
   transform: rotate(0deg);
+  z-index: 2;
+  opacity: 50%;
+}
+
+#off_button {
+  background-color: #4444AA;
+  right: 140;
+  bottom: 0;
+  width: 100px;
+}
+
+#moon_button {
+  background-color: #4444AA;
+  right: 245;
+  bottom: 0;
+  width: 100px;
+}
+
+#planet_button {
+  background-color: #4444AA;
+  right: 350;
+  bottom: 0;
+  width: 100px;
+}
+
+#west_button {
+  background-color: #333333;
+  right: 455;
+  bottom: 0;
+  width: 100px;
+}
+
+#east_button {
+  background-color: #333333;
+  right: 560;
+  bottom: 0;
+  width: 100px;
+}
+
+#north_button {
+  background-color: #333333;
+  right: 665;
+  bottom: 0;
+  width: 100px;
+}
+
+#south_button {
+  background-color: #333333;
+  right: 770;
+  bottom: 0;
+  width: 100px;
 }
 
 path {
