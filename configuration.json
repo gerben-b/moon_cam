@@ -129,5 +129,13 @@
       "iris_id":9,
       "factor":512
     }
+  ],
+  "observatory_setting":
+  [
+    {
+      "latitude":52.0,
+      "longitude":5.0,
+      "altitude":5
+    }
   ]
 }
