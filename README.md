@@ -15,7 +15,10 @@ Some notes on installation of this software:
 - Mjpg-streamer must be built from source on the Raspberry pi;
 - The camera is a Raspberry HQ camera, but other camera's should work to with some tweaking of the scripts.
 
-In the near future, moon_cam will also be able to control a telescope using the indi library. This is currently under test.
+I hope I got al that git stuff right. If so, moon_calc now supports telescope control:
+- Slew the scope in 4 directions to find the target;
+- Track at lunar speed;
+- Track at sidereal speed.
 
 Issues
 - I am not sure that all angles are correct. The calculations in astronomy match those in kstars but the suncalc calculations seem slightly of;
