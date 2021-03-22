@@ -55,7 +55,18 @@
               <label class="grid">Current time:</label><label id="current_time"></label>
               <br />
               <label class="grid">UTC time:</label><label id="utc_time"></label>
-              <svg id="svg"><path id="moon_illumination"/></svg>
+              <br />
+              <label class="grid">Latitude:</label><label id="latitude"></label>
+              <label class="grid">Longitude:</label><label id="longitude"></label>
+              <label class="grid">Altitude:</label><label id="altitude"></label>
+              <svg class="moon_front" id="svg"><path id="moon_illumination"/></svg>
+              <input type="button" id="off_button" onclick="observatory.scope_off()" value="scope off" />
+              <input type="button" id="moon_button" onclick="observatory.track_moon()" value="track moon" />
+              <input type="button" id="planet_button" onclick="observatory.track_planet()" value="track planet" />
+              <input type="button" id="west_button" onclick="observatory.slew_west()" value="slew west" />
+              <input type="button" id="east_button" onclick="observatory.slew_east()" value="slew east" />
+              <input type="button" id="north_button" onclick="observatory.slew_north()" value="slew north" />
+              <input type="button" id="south_button" onclick="observatory.slew_south()" value="slew south" />
             </div>
           </td>
         </tr>
